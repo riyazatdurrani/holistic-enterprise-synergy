@@ -15,7 +15,8 @@ import {
   ChevronDown, 
   ChevronRight,
   Menu,
-  X
+  X,
+  TrendingUp
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -139,6 +140,13 @@ const Sidebar = ({ collapsed = false, onToggleCollapse }: SidebarProps) => {
             label="Dashboard" 
             to="/"
             active={isActive("/")}
+            collapsed={collapsed}
+          />
+          <SidebarItem 
+            icon={<TrendingUp size={18} />} 
+            label="Stock Advisor" 
+            to="/stocks"
+            active={isActive("/stocks")}
             collapsed={collapsed}
           />
         </SidebarSection>
