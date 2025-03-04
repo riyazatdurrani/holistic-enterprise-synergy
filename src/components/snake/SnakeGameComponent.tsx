@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -98,18 +97,10 @@ const SnakeGameComponent = () => {
     return newFood;
   }, [snake]);
 
-  // Check if snake collided with itself or walls
+  // Check if snake collided with itself (walls are now passable)
   const checkCollision = useCallback((head: Position): boolean => {
-    // Check wall collision
-    if (
-      head.x < 0 || 
-      head.x >= GRID_SIZE || 
-      head.y < 0 || 
-      head.y >= GRID_SIZE
-    ) {
-      return true;
-    }
-
+    // No more wall collision checks since the snake can now pass through walls
+    
     // Check self collision (skip the last element which is the tail and will move)
     for (let i = 0; i < snake.length - 1; i++) {
       if (snake[i].x === head.x && snake[i].y === head.y) {
@@ -144,6 +135,12 @@ const SnakeGameComponent = () => {
         default:
           break;
       }
+
+      // Implement wrap-around logic for walls
+      if (head.x < 0) head.x = GRID_SIZE - 1;
+      if (head.x >= GRID_SIZE) head.x = 0;
+      if (head.y < 0) head.y = GRID_SIZE - 1;
+      if (head.y >= GRID_SIZE) head.y = 0;
 
       // Check collision
       if (checkCollision(head)) {
