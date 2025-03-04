@@ -10,6 +10,7 @@ import HumanResources from "./pages/HumanResources";
 import Inventory from "./pages/Inventory";
 import Finance from "./pages/Finance";
 import StockRecommendationApp from "./pages/StockRecommendationApp";
+import SnakeGame from "./pages/SnakeGame";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/finance" element={<Finance />} />
             <Route path="/stocks" element={<StockRecommendationApp />} />
+            <Route path="/snake" element={<SnakeGame />} />
             {/* Placeholders for other module routes */}
             <Route path="/sales" element={<NotFound />} />
             <Route path="/logistics" element={<NotFound />} />
